@@ -10,6 +10,14 @@ export default class Tuple {
     this.elements = elements;
   }
 
+  get(num: number) {
+    return this.elements[num];
+  }
+
+  set(num: number, value: number) {
+    this.elements[num] = value;
+  }
+
   equals(other: Tuple) {
     // compare each element using epsilon
     return this.elements.every((element, index) => {
@@ -27,6 +35,18 @@ export default class Tuple {
     return new Tuple(...this.elements.map((element, index) => {
       return element - other.elements[index];
     }));
+  }
+
+  negate() {
+    return new Tuple(...this.elements.map(element => -element));
+  }
+
+  multiply(scalar: number) {
+    return new Tuple(...this.elements.map(element => element * scalar));
+  }
+
+  divide(scalar: number) {
+    return new Tuple(...this.elements.map(element => element / scalar));
   }
 
   toVector() {

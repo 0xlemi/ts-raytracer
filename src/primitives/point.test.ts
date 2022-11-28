@@ -3,7 +3,6 @@
 // Compare this snippet from src/primitives/vector.test.ts:
 import { describe, expect, it } from '@jest/globals';
 import Point from "./point";
-import Tuple from './tuple';
 import Vector from "./vector";
 
 
@@ -35,9 +34,6 @@ describe("Point", () => {
       expect(point1.subtract(point2)).toStrictEqual(new Vector(0, 0, 0));
     });
   });
-
-
-
 
 });
 

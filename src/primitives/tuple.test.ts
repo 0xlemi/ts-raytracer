@@ -5,6 +5,28 @@ import Tuple from './tuple';
 import Vector from "./vector";
 
 describe("Tuple", () => {
+
+  describe("get", () => {
+    it("should return the value at the given index", () => {
+      const tuple = new Tuple(1, 2, 3, 4);
+      expect(tuple.get(0)).toBe(1);
+      expect(tuple.get(1)).toBe(2);
+      expect(tuple.get(2)).toBe(3);
+      expect(tuple.get(3)).toBe(4);
+    });
+  });
+
+  describe("set", () => {
+    it("should set the value at the given index", () => {
+      const tuple = new Tuple(1, 2, 3, 4);
+      tuple.set(0, 5);
+      tuple.set(1, 6);
+      tuple.set(2, 7);
+      tuple.set(3, 8);
+      expect(tuple).toStrictEqual(new Tuple(5, 6, 7, 8));
+    });
+  });
+
   describe("equals", () => {
     it("should return true if two tuples are equal", () => {
       const tuple1 = new Tuple(1, 2, 3.000001, 4);
@@ -35,6 +57,28 @@ describe("Tuple", () => {
       expect(tuple2.subtract(tuple1)).toStrictEqual(new Tuple(0, 0, 0, 0));
     });
   });
+
+  describe("negate", () => {
+    it("should negate a tuple", () => {
+      const tuple = new Tuple(1, 2, 3, 4);
+      expect(tuple.negate()).toStrictEqual(new Tuple(-1, -2, -3, -4));
+    });
+  });
+
+  describe("multiply", () => {
+    it("should multiply a tuple by a scalar", () => {
+      const tuple = new Tuple(1, 2, 3, 4);
+      expect(tuple.multiply(2)).toStrictEqual(new Tuple(2, 4, 6, 8));
+    });
+  });
+
+  describe("divide", () => {
+    it("should divide a tuple by a scalar", () => {
+      const tuple = new Tuple(1, 2, 3, 4);
+      expect(tuple.divide(2)).toStrictEqual(new Tuple(0.5, 1, 1.5, 2));
+    });
+  });
+
 
   describe("toVector", () => {
     it("should return a vector", () => {

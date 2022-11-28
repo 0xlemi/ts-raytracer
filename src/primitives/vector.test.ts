@@ -76,14 +76,12 @@ describe("Vector", () => {
     });
   });
 
-
   describe("normalize", () => {
     it("should return the normalized vector", () => {
       const vector = new Vector(1, 2, 3);
       expect(vector.normalize()).toStrictEqual(new Vector(1 / Math.sqrt(14), 2 / Math.sqrt(14), 3 / Math.sqrt(14)));
     });
   });
-
 
   describe("dot", () => {
     it("should return the dot product of two vectors", () => {
@@ -110,6 +108,4 @@ describe("Vector", () => {
       expect(vector.toString()).toBe("Vector[1, 2, 3]");
     });
   });
-
-
 });

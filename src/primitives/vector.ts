@@ -1,8 +1,6 @@
 import Point from "./point";
 import Tuple from "./tuple";
 
-
-
 export default class Vector {
 
   tuple: Tuple;
@@ -17,8 +15,8 @@ export default class Vector {
 
   add(other: Vector | Point) {
     if (other instanceof Vector) {
-      const newVec = this.tuple.add(other.tuple).elements
-      return new Vector(newVec[0], newVec[1], newVec[2]);
+      const newVec = this.tuple.add(other.tuple);
+      return new Vector(newVec.get(0), newVec.get(1), newVec.get(2));
     } else if (other instanceof Point) {
       return new Point(...this.tuple.add(other.tuple).elements);
     }
@@ -26,8 +24,8 @@ export default class Vector {
 
   subtract(other: Vector | Point) {
     if (other instanceof Vector) {
-      const newVec = this.tuple.subtract(other.tuple).elements;
-      return new Vector(newVec[0], newVec[1], newVec[2]);
+      const newVec = this.tuple.subtract(other.tuple);
+      return new Vector(newVec.get(0), newVec.get(1), newVec.get(2));
     } else if (other instanceof Point) {
       // wierd case may need change w = -1
       return new Point(...this.tuple.subtract(other.tuple).elements);
@@ -35,18 +33,18 @@ export default class Vector {
   }
 
   negate() {
-    const newVec = this.tuple.elements.map(element => -element);
-    return new Vector(newVec[0], newVec[1], newVec[2]);
+    const newVec = this.tuple.negate();
+    return new Vector(newVec.get(0), newVec.get(1), newVec.get(2));
   }
 
   multiply(scalar: number) {
-    const newVec = this.tuple.elements.map(element => element * scalar);
-    return new Vector(newVec[0], newVec[1], newVec[2]);
+    const newVec = this.tuple.multiply(scalar);
+    return new Vector(newVec.get(0), newVec.get(1), newVec.get(2));
   }
 
   divide(scalar: number) {
-    const newVec = this.tuple.elements.map(element => element / scalar);
-    return new Vector(newVec[0], newVec[1], newVec[2]);
+    const newVec = this.tuple.divide(scalar);
+    return new Vector(newVec.get(0), newVec.get(1), newVec.get(2));
   }
 
   magnitude() {
